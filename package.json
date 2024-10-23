@@ -1,0 +1,21 @@
+{
+  "name": "quatt",
+  "version": "1.0.0",
+  "description": "e2e test scenarios for the CRUD user operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^16.4.5",
+    "jest-html-reporter": "^3.10.2"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "supertest": "^6.2.0"
+  },
+  "keywords": [],
+  "author": "Jing",
+  "license": "ISC"
+}
