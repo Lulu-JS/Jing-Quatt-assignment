@@ -26,9 +26,9 @@ npm install cross-env
 ```
 npm run test
 ```
-(ii) Only Execute regression test cases:
+(ii) Only Execute sanity test cases:
 ```
-npm run test -t '^Regression'
+npm run test -t '^Sanity'
 ```
 7. Refer to `test-report.html` for test report.
 
