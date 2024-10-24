@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "jest-html-reporter": "^3.10.2"
   },

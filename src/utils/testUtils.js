@@ -3,14 +3,14 @@ const {
     statusList
 } = require('../testData/apiPaylodEnums');
 
- const generateRandomString = () =>  {
-    const randomString = Math.random().toString(36).substring(2, 10); // Generate a random string of 8 characters
+ const generateRandomString = (length = 10) =>  {
+    const randomString = Math.random().toString(36).substring(2, length+2);
     return randomString;
 };
 
  const generateRandomEmail = () =>  {
     const randomEmailName = generateRandomString()
-    const domain = 'example.com'; // You can change this domain as needed
+    const domain = 'example.com'; 
     return `${randomEmailName}@${domain}`;
 };
 
