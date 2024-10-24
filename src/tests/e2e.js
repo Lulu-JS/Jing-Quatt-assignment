@@ -21,7 +21,7 @@ const {
 describe('CRUD Operations on User API with REST', () => {
 
     // Test for creating a new user, test for get user details
-    test('Regression: Create a new user and verify by get user details', async () => {
+    test('Sanity: Create a new user and verify by get user details', async () => {
         const userName = generateRandomString();
         const userGender = getRandomGender();
         const userEmail = generateRandomEmail();
@@ -126,7 +126,7 @@ describe('CRUD Operations on User API with REST', () => {
     test.todo('Feature: Create a new user with unsupported media type.');
 
     // Test for updating the user details
-    test('Regression: Update user details and verify', async () => {
+    test('Sanity: Update user details and verify', async () => {
         // Create test data
         const userName = generateRandomString();
         const userGender = getRandomGender();
@@ -204,8 +204,46 @@ describe('CRUD Operations on User API with REST', () => {
 
     test.todo('Feature: Get user details with unsupported media type.');
 
+    // Test for fetching user list
+    test('Sanity: Fetch user list with default.', async () => {
+        // Current default set is return 10 users per page.
+        // If test env cannot ensure that at lease 11 existing users,  then we need to create 11 users before executing this test case.
+        const fetchedUserListResponse = await getUserList();
+        expect(fetchedUserListResponse.status).toBe(200);
+        const fetchedUserList = fetchedUserListResponse.data;
+        expect(fetchedUserList.length).toBe(10);
+        fetchedUserList.forEach(user => {
+            expect(user).toHaveProperty('id');
+            expect(user).toHaveProperty('name');
+            expect(user).toHaveProperty('email');
+            expect(user).toHaveProperty('gender');
+            expect(user).toHaveProperty('status');
+          });
+
+    });
+
+    test('Sanity: Fetch user list with page and limit.', async () => {
+        // If test env cannot ensure that at lease 6 existing users,  then we need to create 6 users before executing this test case.
+        const fetchedUserListResponse = await getUserList(pagination='?page=1&per_page=5');
+        expect(fetchedUserListResponse.status).toBe(200);
+        const fetchedUserList = fetchedUserListResponse.data;
+        expect(fetchedUserList.length).toBe(5);
+        fetchedUserList.forEach(user => {
+            expect(user).toHaveProperty('id');
+            expect(user).toHaveProperty('name');
+            expect(user).toHaveProperty('email');
+            expect(user).toHaveProperty('gender');
+            expect(user).toHaveProperty('status');
+          });
+
+    });
+
+    test.todo('Feature: Fetch user list with invalid token');
+
+    test.todo('Feature: Update user details with unsupported media type.');
+
     // Test for deleting the user
-    test('Regression: Delete user and verify', async () => {
+    test('Feature: Delete user and verify', async () => {
         // Create test data
         const userName = generateRandomString();
         const userGender = getRandomGender();

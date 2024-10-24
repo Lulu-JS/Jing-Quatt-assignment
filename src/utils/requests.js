@@ -32,9 +32,9 @@ const getUser = async (id, headers = validHeaders) => {
 };
 
 // Get User list
-const getUserList = async (headers = validHeaders) => {
+const getUserList = async (pagination = '', headers = validHeaders) => {
     const response = await axios.get(
-        `${baseUrl}/${apiUrl}`,
+        `${baseUrl}/${apiUrl}${pagination}`,
         { headers }
     );
     return response;
