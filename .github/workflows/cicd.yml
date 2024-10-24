@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD pipeline
 
 on:
   push:
@@ -23,6 +23,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Set up .env file
+        run: |
+          echo "AUTHORIZATION=${{ secrets.AUTHORIZATION }}" > .env
 
       - name: Run tests
         run: npm run test
