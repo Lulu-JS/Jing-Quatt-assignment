@@ -36,4 +36,6 @@ Note:
 This e2e test is not complete. There are a few refactors need to be done if there's more time:
 1. Complete the `todo` test cases
 2. Refactor the assertions to query in DB for verification
-3. Use soft assertions to cover more chcks even one of the assertions fails during tesing.
+3. Use soft assertions to cover more checks even one of the assertions fails during tesing.
+4. Add performance test cases if neccessary.
+5. Add security test cases if neccessary.

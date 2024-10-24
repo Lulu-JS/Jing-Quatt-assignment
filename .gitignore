@@ -6,3 +6,4 @@
 *.css
 *.xml
 /coverage/
+.DS_Store

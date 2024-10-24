@@ -1,6 +1,7 @@
 const {
     createUser,
     getUser,
+    getUserList,
     updateUser,
     deleteUser,
 } = require('../utils/requests');
@@ -27,10 +28,12 @@ describe('CRUD Operations on User API with REST', () => {
         const userStatus = getRandomStatus();
 
         const createdUserResponse = await createUser(
-            userName,
-            userGender,
-            userEmail,
-            userStatus
+            {
+                name: userName,
+                gender: userGender,
+                email: userEmail,
+                status: userStatus
+            }
         );
         const createdUser = createdUserResponse.data;
 
@@ -65,10 +68,12 @@ describe('CRUD Operations on User API with REST', () => {
         const userStatus = getRandomStatus();
         try {
             await createUser(
-                userName,
-                userGender,
-                'invalidEmail',
-                userStatus
+                {
+                    name: userName,
+                    gender: userGender,
+                    email: 'invalidEmail',
+                    status: userStatus
+                }
             );  // Assuming the function creates invalid user email for this test
 
         } catch (error) {
@@ -95,10 +100,12 @@ describe('CRUD Operations on User API with REST', () => {
 
         try {
             await createUser(
-                userName,
-                userGender,
-                userEmail,
-                userStatus,
+                {
+                    name: userName,
+                    gender: userGender,
+                    email: userEmail,
+                    status: userStatus
+                },
                 invalidHeaders);  // Assuming the function creates invalid user email for this test
 
         } catch (error) {
@@ -127,10 +134,12 @@ describe('CRUD Operations on User API with REST', () => {
         const userStatus = getRandomStatus();
 
         const createdUserResponse = await createUser(
-            userName,
-            userGender,
-            userEmail,
-            userStatus
+            {
+                name: userName,
+                gender: userGender,
+                email: userEmail,
+                status: userStatus
+            }
         );
         // Continue testing if test data creation succeed
         expect(createdUserResponse.status).toBe(201);
@@ -146,10 +155,12 @@ describe('CRUD Operations on User API with REST', () => {
         // Update the created user details
         const updatedUserResponse = await updateUser(
             createdUserId,
-            newName,
-            newEmail,
-            newStatus,
-            newGender
+            {
+                name: newName,
+                gender: newGender,
+                email: newEmail,
+                status: newStatus
+            },
         );
         expect(updatedUserResponse.status).toBe(200);
 
@@ -202,10 +213,12 @@ describe('CRUD Operations on User API with REST', () => {
         const userStatus = getRandomStatus();
 
         const createdUserResponse = await createUser(
-            userName,
-            userGender,
-            userEmail,
-            userStatus
+            {
+                name: userName,
+                gender: userGender,
+                email: userEmail,
+                status: userStatus
+            }
         );
         const createdUser = createdUserResponse.data;
         const createdUserId = createdUser.id;
